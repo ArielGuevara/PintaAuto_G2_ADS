@@ -35,6 +35,21 @@ const Usuario = sequelize.define('Usuario', {
             }
         }
     },
+    email:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: {
+            msg: 'El correo electrónico ya está registrado'
+        },
+        validate:{
+            isEmail: {
+                msg: 'El formato del correo electrónico es inválido'
+            },
+            notEmpty: {
+                msg: 'El correo electrónico no puede estar vacío'
+            }
+        }
+    },
     password: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -1,6 +1,8 @@
 const Usuario = require('../models/Usuario');
 const {generarJWT} = require('../utils/jwt');
-const {successResponse, errorResponse} = require('../utils/response');
+const {successResponse, errorResponse} = require('../utils/responses');
+const bcrypt = require('bcrypt');
+
 
 /**
  * Registra un nuevo usuario en el sistema

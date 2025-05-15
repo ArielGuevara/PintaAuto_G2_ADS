@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();    
 
-const usuarioRoutes = require('./usuariosRoutes');  
+const usuarioRoutes = require('./usuariosRoutes'); 
+const { login } = require('../controllers/authController'); 
 
 router.use('/usuarios', usuarioRoutes); // Rutas de usuarios
+router.post('/login', login);
 
 router.get('/', (req, res) => {
     res.json({

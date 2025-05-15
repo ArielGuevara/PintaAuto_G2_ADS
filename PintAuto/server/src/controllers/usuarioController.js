@@ -36,10 +36,10 @@ const obtenerUsuarios = async (req, res) => {
 const obtenerUsuarioPorId = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     // Verificar permisos: solo el propio usuario o un administrador pueden ver los detalles
-    if (req.usuario.id !== parseInt(id)){
-      return errorResponse(res, 403, 'No tiene permisos para ver este usuario');
+    if (req.usuario.id !== 1){
+      return errorResponse(res, 403, 'No tiene permisos para ver este usuario22');
     }
     
     // Buscar usuario por ID
@@ -55,7 +55,7 @@ const obtenerUsuarioPorId = async (req, res) => {
       usuario 
     });
   } catch (error) {
-    console.error('Error al obtener usuario por ID:', error);
+    console.error('Error al obtener usuario por ID22:', error);
     return errorResponse(res, 500, 'Error al obtener el usuario');
   }
 };
@@ -128,7 +128,7 @@ const actualizarUsuario = async (req, res) => {
     }
     
     // Verificar permisos: solo el propio usuario o un administrador pueden actualizar
-    if (req.usuario.id !== parseInt(id)) {
+    if (req.usuario.id !== 1) {
       return errorResponse(res, 403, 'No tiene permisos para actualizar este usuario');
     }
     

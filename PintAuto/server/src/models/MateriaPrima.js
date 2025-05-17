@@ -1,14 +1,15 @@
-const {Sequelize} = require('sequelize');
+const { DataTypes} = require('sequelize');
+const { sequelize } = require('../config/database');
 
 const MateriaPrima = sequelize.define('MateriaPrima', {
     id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
     nombre: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -21,7 +22,7 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
         }
     },
     codigo: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -34,7 +35,7 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
         }
     },
     cantidad: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate:{
             notEmpty: {
@@ -46,7 +47,7 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
         }
     },
     precioUnitario:{
-        type: Sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull:false,
         validate:{
             notEmpty:{

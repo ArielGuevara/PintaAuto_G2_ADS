@@ -1,6 +1,5 @@
-const Materia = require('../models/materiaPrimaModel');
-const Usuario = require('../models/Usuario');
-const{successResponse, errorResponse} = require('../utils/response');
+const Materia = require('../models/materiaPrima');
+const{successResponse, errorResponse} = require('../utils/responses');
 
 /**
  * Obtiene toda la maeteria prima 

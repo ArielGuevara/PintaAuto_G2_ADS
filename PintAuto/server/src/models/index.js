@@ -4,6 +4,7 @@
  */
 
 const Usuario = require('./Usuario');
+const MateriaPrima = require('./MateriaPrima');
 
 // Aquí se pueden agregar más modelos en el futuro
 // const OtroModelo = require('./OtroModelo');
@@ -15,5 +16,6 @@ const Usuario = require('./Usuario');
 
 // Exportar todos los modelos
 module.exports = {
-  Usuario
+  Usuario,
+  MateriaPrima
 };

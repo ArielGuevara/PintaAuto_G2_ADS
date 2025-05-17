@@ -4,6 +4,8 @@ const {sequelize, testDBConnection} = require('./config/database');
 const routes = require('./routes');
 const crearAdminInicial = require('./utils/adminInicial');
 
+require('./models')
+
 require('dotenv').config();
 const app = express();  
 app.use(express.json());

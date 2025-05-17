@@ -19,6 +19,14 @@ const sequelize = new Sequelize(
     }
 );
 
+sequelize.sync({alter: true})
+    .then(() => {
+        console.log('✅ Base de datos sincronizada correctamente.');
+    })
+    .catch((error) => {
+        console.error('❌ Error al sincronizar la base de datos:', error);
+    });
+
 const testDBConnection = async () => {
     try {
         await sequelize.authenticate();

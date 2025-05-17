@@ -21,16 +21,17 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
             }
         }
     },
-    codigo: {
+    unidadMedida: {
         type: DataTypes.STRING,
         allowNull: false,
+        field: 'unidad_medida',
         validate: {
             notEmpty: {
-                msg: 'El código no puede estar vacío'
+                msg: 'La unidad de medida no puede estar vacía'
             },
             len: {
-                args: [3, 20],
-                msg: 'El código debe tener entre 3 y 20 caracteres'
+                args: [2, 10],
+                msg: 'La unidad de medida debe tener entre 2 y 10 caracteres'
             }
         }
     },
@@ -49,6 +50,7 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
     precioUnitario:{
         type: DataTypes.FLOAT,
         allowNull:false,
+        field: 'precio_unitario',
         validate:{
             notEmpty:{
                 msg:'El precio unitario no puede estar vacío'

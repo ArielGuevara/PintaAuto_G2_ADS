@@ -1,4 +1,4 @@
-const Materia = require('../models/materiaPrima');
+const Materia = require('../models/MateriaPrima');
 const{successResponse, errorResponse} = require('../utils/responses');
 
 /**
@@ -39,10 +39,10 @@ const obtenerMateriaPorId = async (req, res) => {
 
 const crearMateria = async (req, res) => {
     try {
-        const { nombre, cantidad, precio } = req.body;
+        const { nombre, cantidad, unidadMedida, precioUnitario } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!nombre || !cantidad || !precio) {
+        if (!nombre || !cantidad || !unidadMedida|| !precioUnitario) {
             return errorResponse(res, 400, 'Todos los campos son obligatorios');
         }
 
@@ -52,7 +52,7 @@ const crearMateria = async (req, res) => {
         }
 
         // Crear nueva materia prima
-        const nuevaMateria = await Materia.create({ nombre, cantidad, precio });
+        const nuevaMateria = await Materia.create({ nombre, cantidad, unidadMedida, precioUnitario });
 
         return successResponse(res, 201, 'Materia creada correctamente', { nuevaMateria });
     } catch (error) {
@@ -73,10 +73,10 @@ const crearMateria = async (req, res) => {
 const actualizarMateria = async (req, res) => {
     try{
         const { id } = req.params;
-        const { nombre, cantidad, precio } = req.body;
+        const { nombre, cantidad, unidadMedida, precioUnitario } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!nombre || !cantidad || !precio) {
+        if (!nombre || !cantidad || !unidadMedida || !precioUnitario) {
             return errorResponse(res, 400, 'Todos los campos son obligatorios');
         }
 
@@ -95,7 +95,8 @@ const actualizarMateria = async (req, res) => {
         await materia.update({ 
             nombre:nombre || materia.nombre, 
             cantidad: cantidad || materia.cantidad, 
-            precio: precio || materia.precio});
+            unidadMedida: unidadMedida || materia.unidadMedida,
+            precioUnitario: precioUnitario || materia.precioUnitario});
 
         return successResponse(res, 200, 'Materia actualizada correctamente', { materia });
 

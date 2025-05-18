@@ -1,10 +1,9 @@
-import { login } from '../../../server/src/controllers/authController';
 import api from './api';
 
 const authService = {
-    login: async(ElementInternals, password) => {
+    login: async(email, password) => {
         try{
-            const response = await api.post('/auth/login', {email, password});
+            const response = await api.post('/login', {email, password});
 
             const responseData = response.data;
 

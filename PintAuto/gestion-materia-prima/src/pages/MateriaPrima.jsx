@@ -4,10 +4,10 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
 // Datos de ejemplo (en un caso real, estos vendrían de una API)
 const materiaPrimaData = [
-  { id: 1, nombre: 'Printura', cantidad: 50, unidad: 'litros', fechaIngreso: '2023-05-10' },
-  { id: 2, nombre: 'Ligas', cantidad: 30, unidad: 'unidades', fechaIngreso: '2023-05-12' },
-  { id: 3, nombre: 'Tiñer', cantidad: 120, unidad: 'litros', fechaIngreso: '2023-05-15' },
-  { id: 4, nombre: 'Barniz', cantidad: 20, unidad: 'litros', fechaIngreso: '2023-05-14' },
+  { id: 1, nombre: 'Printura', cantidad: 50, unidad: 'litros', precioUnitario: '15.20' },
+  { id: 2, nombre: 'Ligas', cantidad: 30, unidad: 'unidades', precioUnitario: '2.30' },
+  { id: 3, nombre: 'Tiñer', cantidad: 120, unidad: 'litros', precioUnitario: '10.20' },
+  { id: 4, nombre: 'Barniz', cantidad: 20, unidad: 'litros', precioUnitario: '5.20' },
 ]
 
 const MateriaPrima = () => {
@@ -38,7 +38,7 @@ const MateriaPrima = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unidad</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de Ingreso</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Unitario</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
@@ -49,7 +49,7 @@ const MateriaPrima = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.nombre}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.cantidad}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.unidad}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.fechaIngreso}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.precioUnitario}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button className="text-blue-600 hover:text-blue-900 mr-3">
                     <FiEdit />

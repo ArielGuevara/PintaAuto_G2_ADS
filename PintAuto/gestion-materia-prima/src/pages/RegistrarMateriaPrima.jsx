@@ -6,7 +6,7 @@ const RegistrarMateriaPrima = () => {
     nombre: '',
     cantidad: '',
     unidad: 'kg',
-    fechaIngreso: new Date().toISOString().split('T')[0]
+    precioUnitario: '',
   })
   
   const navigate = useNavigate()
@@ -88,14 +88,14 @@ const RegistrarMateriaPrima = () => {
         
         <div className="mb-6">
           <label className="block text-gray-700 mb-2" htmlFor="fechaIngreso">
-            Fecha de Ingreso
+            Precio Unitario
           </label>
           <input
-            type="date"
-            id="fechaIngreso"
-            name="fechaIngreso"
+            type="input"
+            id="precioUnitario"
+            name="precioUnitario"
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.fechaIngreso}
+            value={formData.precioUnitario}
             onChange={handleChange}
             required
           />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {useForm} from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
@@ -11,6 +11,13 @@ const Login = () => {
   //const [credentials, setCredentials] = useState({ username: '', password: '' })
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const errorTimeout = useRef(null);
+
+  const showError = (msg) => {
+    setError(msg);
+    if (errorTimeout.current) clearTimeout(errorTimeout.current);
+    errorTimeout.current = setTimeout(() => setError(''), 5000);
+  };
 
   // const handleChange = (e) => {
   //   setCredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -22,19 +29,21 @@ const Login = () => {
       const result = await login(data.email, data.password);
       if(!result.success){
         if(result.errorType === 'email'){
-          setError('Correo electronico no resgistrado')
+          showError('Correo electronico no resgistrado')
         }else if(result.errorType === 'password'){
-          setError('Contraseña incorrecta')
+          showError('Contraseña incorrecta')
         }else if(result.errorType === 'both'){  
-          setError('Correo y contraseña incorrectos')
-        }
-      }  else {
+          showError('Error en el inicio de sesión')
+        } else {
+        showError('Error en el inicio de sesión');
+        } 
+      } else {
       // Login exitoso: redirige al dashboard o página principal
       navigate('/dashboard'); // Cambia '/dashboard' por la ruta que corresponda en tu app
-    }
+      }
     }catch(error){
       console.error('Error en el inicio de sesión:', error);
-      setError('Error en el inicio de sesión');
+      showError('Error en el inicio de sesión')
     }finally{
       setIsLoading(false);
     }

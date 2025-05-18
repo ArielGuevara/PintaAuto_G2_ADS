@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import materiaprimaService from '../services/materiaPrimaService'
 
 const RegistrarMateriaPrima = () => {
   const [formData, setFormData] = useState({
@@ -19,12 +20,21 @@ const RegistrarMateriaPrima = () => {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Aquí normalmente harías una petición POST a tu API
-    console.log('Materia prima registrada:', formData)
-    alert('Materia prima registrada con éxito!')
-    navigate('/dashboard')
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await materiaprimaService.crear({
+        nombre: formData.nombre,
+        cantidad: formData.cantidad,
+        unidadMedida: formData.unidad, // Asegúrate que el backend espera este nombre
+        precioUnitario: formData.precioUnitario,
+      });
+      alert('Materia prima registrada con éxito!');
+      navigate('/dashboard');
+    } catch (error) {
+      alert('Error al registrar materia prima');
+      console.error(error);
+    }
   }
 
   return (

@@ -39,10 +39,10 @@ const obtenerMateriaPorId = async (req, res) => {
 
 const crearMateria = async (req, res) => {
     try {
-        const { nombre, cantidad, unidadMedida, precioUnitario } = req.body;
+        const { nombre, cantidad, detalles, unidadMedida, precioUnitario } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!nombre || !cantidad || !unidadMedida|| !precioUnitario) {
+        if (!nombre || !cantidad || !detalles || !unidadMedida|| !precioUnitario) {
             return errorResponse(res, 400, 'Todos los campos son obligatorios');
         }
 
@@ -52,7 +52,7 @@ const crearMateria = async (req, res) => {
         }
 
         // Crear nueva materia prima
-        const nuevaMateria = await Materia.create({ nombre, cantidad, unidadMedida, precioUnitario });
+        const nuevaMateria = await Materia.create({ nombre, cantidad, detalles, unidadMedida, precioUnitario });
 
         return successResponse(res, 201, 'Materia creada correctamente', { nuevaMateria });
     } catch (error) {
@@ -73,10 +73,10 @@ const crearMateria = async (req, res) => {
 const actualizarMateria = async (req, res) => {
     try{
         const { id } = req.params;
-        const { nombre, cantidad, unidadMedida, precioUnitario } = req.body;
+        const { nombre, cantidad, detalle, unidadMedida, precioUnitario } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!nombre || !cantidad || !unidadMedida || !precioUnitario) {
+        if (!nombre || !cantidad || !detalle || !unidadMedida || !precioUnitario) {
             return errorResponse(res, 400, 'Todos los campos son obligatorios');
         }
 
@@ -95,6 +95,7 @@ const actualizarMateria = async (req, res) => {
         await materia.update({ 
             nombre:nombre || materia.nombre, 
             cantidad: cantidad || materia.cantidad, 
+            detalle: detalle || materia.detalle,
             unidadMedida: unidadMedida || materia.unidadMedida,
             precioUnitario: precioUnitario || materia.precioUnitario});
 

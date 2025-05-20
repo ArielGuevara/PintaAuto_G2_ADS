@@ -47,6 +47,16 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
             }
         }
     },
+    detalles:{
+        type: DataTypes.STRING,
+        allowNull:false,
+        validate:{
+            len:{
+                args:[0, 255],
+                msg:'Los detalles deben tener un máximo de 255 caracteres'
+            }
+        }
+    },
     precioUnitario:{
         type: DataTypes.FLOAT,
         allowNull:false,
@@ -58,6 +68,24 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
             isFloat:{
                 msg:'El precio unitario debe ser un número'
             }
+        }
+    },
+    fechaIngreso: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        field: 'fecha_ingreso',
+        defaultValue: DataTypes.NOW,
+        validate: {
+            isDate: {
+                msg: 'La fecha de ingreso debe ser una fecha válida'
+            }
+        },
+        set(value) {
+            // Evita que se actualice después de la creación
+            if (this.isNewRecord) {
+                this.setDataValue('fechaIngreso', value);
+            }
+            // Si no es un nuevo registro, ignora cualquier intento de set
         }
     }
 }, {

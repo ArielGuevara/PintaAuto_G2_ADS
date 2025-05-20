@@ -25,7 +25,7 @@ const startServer = async () => {
         console.log('✅ Conexión a la base de datos exitosa');
 
         // Sincronizar los modelos con la base de datos
-        await sequelize.sync({ force: false }); // Cambia a true si quieres recrear las tablas
+        await sequelize.sync({ force: false}); // Cambia a true si quieres recrear las tablas
         console.log('✅ Modelos sincronizados con la base de datos.');  
 
         // Crear el administrador inicial

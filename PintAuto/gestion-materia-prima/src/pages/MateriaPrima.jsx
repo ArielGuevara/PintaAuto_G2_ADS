@@ -46,6 +46,7 @@ const MateriaPrima = () => {
         nombre: editData.nombre,
         cantidad: editData.cantidad,
         unidadMedida: editData.unidadMedida,
+        detalle: editData.detalle,
         precioUnitario: editData.precioUnitario,
       });
       setShowEditModal(false);
@@ -90,7 +91,7 @@ const MateriaPrima = () => {
           onClick={() => navigate('/')}
           className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition"
         >
-          Volver al Inicio
+          Cerrar Sesion
         </button>
         <h2 className="text-2xl font-semibold text-gray-800">Materia Prima Disponible</h2>
       </div>
@@ -103,6 +104,7 @@ const MateriaPrima = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unidad</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Detalles</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Unitario</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
@@ -114,6 +116,7 @@ const MateriaPrima = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.nombre}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.cantidad}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.unidadMedida}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.detalles}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.precioUnitario}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button className="text-blue-600 hover:text-blue-900 mr-3"

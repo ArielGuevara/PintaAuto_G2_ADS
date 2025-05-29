@@ -16,7 +16,7 @@ const materiaprimaService = {
         const response = await api.post('/materia/', materiaprima);
         return response.data;
     },
-
+    
     actualizar: async (id, materiaprima) => {
         const response = await api.put(`/materia/${id}`, materiaprima);
         return response.data;

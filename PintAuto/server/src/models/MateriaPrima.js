@@ -29,10 +29,6 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
             notEmpty: {
                 msg: 'La unidad de medida no puede estar vacía'
             },
-            len: {
-                args: [2, 10],
-                msg: 'La unidad de medida debe tener entre 2 y 10 caracteres'
-            }
         }
     },
     cantidad: {

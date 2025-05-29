@@ -73,10 +73,10 @@ const crearMateria = async (req, res) => {
 const actualizarMateria = async (req, res) => {
     try{
         const { id } = req.params;
-        const { nombre, cantidad, detalle, unidadMedida, precioUnitario } = req.body;
+        const { nombre, cantidad, detalles, unidadMedida, precioUnitario } = req.body;
 
         // Validar que todos los campos requeridos estén presentes
-        if (!nombre || !cantidad || !detalle || !unidadMedida || !precioUnitario) {
+        if (!nombre || !cantidad || !detalles || !unidadMedida || !precioUnitario) {
             return errorResponse(res, 400, 'Todos los campos son obligatorios');
         }
 
@@ -95,7 +95,7 @@ const actualizarMateria = async (req, res) => {
         await materia.update({ 
             nombre:nombre || materia.nombre, 
             cantidad: cantidad || materia.cantidad, 
-            detalle: detalle || materia.detalle,
+            detalles: detalles || materia.detalles,
             unidadMedida: unidadMedida || materia.unidadMedida,
             precioUnitario: precioUnitario || materia.precioUnitario});
 

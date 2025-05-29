@@ -26,6 +26,7 @@ const MateriaPrima = () => {
 
   const handleEdit = async (id, nuevosDatos) => {
   try {
+    //console.log(nuevosDatos);
     const res = await materiaPrimaService.actualizar(id, nuevosDatos);
     // Actualiza el estado local con la materia editada
     setMateriaPrima(prev =>
@@ -46,7 +47,7 @@ const MateriaPrima = () => {
         nombre: editData.nombre,
         cantidad: editData.cantidad,
         unidadMedida: editData.unidadMedida,
-        detalle: editData.detalle,
+        detalles: editData.detalles,
         precioUnitario: editData.precioUnitario,
       });
       setShowEditModal(false);
@@ -144,7 +145,8 @@ const MateriaPrima = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
             <h3 className="text-xl font-semibold mb-4">Editar Materia Prima</h3>
             <form onSubmit={handleEditSubmit} className="space-y-4">
-              <div>
+              <div className="flex flex-row justify-between space-x-4">
+                <div>
                 <label className="block text-gray-700 mb-1">Nombre</label>
                 <input
                   type="text"
@@ -166,6 +168,8 @@ const MateriaPrima = () => {
                   required
                 />
               </div>
+              </div>
+              
               <div>
                 <label className="block text-gray-700 mb-1">Unidad de Medida</label>
                 <select
@@ -189,6 +193,17 @@ const MateriaPrima = () => {
                   type="number"
                   name="precioUnitario"
                   value={editData.precioUnitario}
+                  onChange={handleEditChange}
+                  className="w-full px-3 py-2 border rounded"
+                  required
+                />
+              </div>
+               <div>
+                <label className="block text-gray-700 mb-1">Detalles</label>
+                <input
+                  type="text"
+                  name="detalles"
+                  value={editData.detalles}
                   onChange={handleEditChange}
                   className="w-full px-3 py-2 border rounded"
                   required

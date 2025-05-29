@@ -27,7 +27,7 @@ const RegistrarMateriaPrima = () => {
       await materiaprimaService.crear({
         nombre: formData.nombre,
         cantidad: formData.cantidad,
-        unidadMedida: formData.unidad, // Asegúrate que el backend espera este nombre
+        unidadMedida: formData.unidad, 
         precioUnitario: formData.precioUnitario,
         detalles: formData.detalles,
       });
@@ -73,7 +73,7 @@ const RegistrarMateriaPrima = () => {
               onChange={handleChange}
               required
               min="0"
-              step="0.01"
+              step="1"
             />
           </div>
           
@@ -127,7 +127,7 @@ const RegistrarMateriaPrima = () => {
     placeholder="Observaciones, especificaciones, etc."
   />
 </div>
-        <div className="flex justify-end space-x-3">
+        <div className="flex justify-end space-x-3 m-4">
           <button
             type="button"
             onClick={() => navigate('/dashboard')}

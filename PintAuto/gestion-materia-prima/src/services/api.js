@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import authService from './authService';    
 const api = axios.create({
     baseURL: 'http://localhost:5000/api',
     headers: {
@@ -31,6 +31,7 @@ api.interceptors.response.use(
       // Solo redirigir si no es una solicitud de login
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      authService.logout();
       window.location.href = '/login';
     }
     return Promise.reject(error);

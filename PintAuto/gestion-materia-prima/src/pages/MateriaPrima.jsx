@@ -49,6 +49,7 @@ const MateriaPrima = () => {
         unidadMedida: editData.unidadMedida,
         detalles: editData.detalles,
         precioUnitario: editData.precioUnitario,
+        fechaIngreso: editData.fechaIngreso || new Date().toISOString().split('T')[0] // Asignar fecha actual si no se proporciona
       });
       setShowEditModal(false);
     } catch (error) {
@@ -107,6 +108,7 @@ const MateriaPrima = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unidad</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Detalles</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Unitario</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de ingreso</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
@@ -119,6 +121,11 @@ const MateriaPrima = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.unidadMedida}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.detalles}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.precioUnitario}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {item.fechaIngreso
+                  ? new Date(item.fechaIngreso).toLocaleDateString('es-EC', { year: 'numeric', month: '2-digit', day: '2-digit' })
+                  : ''}
+              </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button className="text-blue-600 hover:text-blue-900 mr-3"
                    onClick={() => openEditModal(item)}

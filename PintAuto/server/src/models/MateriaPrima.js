@@ -86,7 +86,7 @@ const MateriaPrima = sequelize.define('MateriaPrima', {
     }
 }, {
     tableName: 'materia_prima',
-    timestamps:false
+    timestamps:true
 });
 
 module.exports = MateriaPrima;

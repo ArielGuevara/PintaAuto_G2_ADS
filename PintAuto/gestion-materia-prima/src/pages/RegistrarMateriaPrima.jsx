@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import materiaprimaService from '../services/materiaPrimaService'
+import materiaprimaService from '../services/materiaprimaService'
 
 const RegistrarMateriaPrima = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +30,7 @@ const RegistrarMateriaPrima = () => {
         unidadMedida: formData.unidad, 
         precioUnitario: formData.precioUnitario,
         detalles: formData.detalles,
+        fechaIngreso: new Date().toISOString()
       });
       alert('Materia prima registrada con éxito!');
       navigate('/dashboard');

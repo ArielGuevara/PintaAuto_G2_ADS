@@ -9,10 +9,10 @@ const Inicio = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 py-20 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-md">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 py-10 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-md">
       
       
-      <img src={logoCarro} alt="Logo Carro" className="w-auto h-auto mb-8 rounded-sm" />
+      <img src={logoCarro} alt="Logo Carro" className="w-[75%] h-auto mb-8 rounded-sm" />
       
       <h2 className="text-4xl font-extrabold text-blue-700 mb-6 text-center">
         ¡Bienvenido al Sistema de Gestion de Inventario de PintAuto!
